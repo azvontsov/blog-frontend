@@ -19,6 +19,15 @@ function App() {
   const [selectedSort, setSelectedSort] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
+  const URL = "https://blog-backend-az.herokuapp.com/posts";
+
+  const getPosts = async () => {
+    const response = await fetch(URL);
+    const data = await response.json();
+    console.log("getPost data", data);
+    setPosts(data);
+  };
+
   const sortedPosts = useMemo(() => {
     console.log("function worked");
     if (selectedSort) {
@@ -33,8 +42,13 @@ function App() {
     return sortedPosts.filter((post) => post.title.includes(searchQuery));
   }, [searchQuery, sortedPosts]);
 
-  const createPost = (newPost) => {
-    setPosts([...posts, newPost]);
+  const createPost = async (newPost) => {
+    await fetch(URL, {
+      method: "POST",
+      headers: { "Content-Type": "Application/json" },
+      body: JSON.stringify(newPost),
+    });
+    getPosts();
   };
   const removePost = (post) => {
     setPosts(posts.filter((p) => p.id !== post.id));
@@ -44,10 +58,8 @@ function App() {
     setSelectedSort(sort);
   };
 
-  // const [user, setUser] = useState(null);
-  // useEffect(() => {
-  //   auth.onAuthStateChanged((user) => setUser(user));
-  // }, []);
+  // run getPost
+  useEffect(() => getPosts(), []);
 
   return (
     <div className="App">
