@@ -19,13 +19,50 @@ function App() {
   const [selectedSort, setSelectedSort] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const URL = "https://blog-backend-az.herokuapp.com/posts";
+  const URL = "https://blog-backend-az.herokuapp.com/posts/";
+
+  // retrive all the posts
 
   const getPosts = async () => {
     const response = await fetch(URL);
     const data = await response.json();
     console.log("getPost data", data);
     setPosts(data);
+  };
+
+  const createPost = async (newPost) => {
+    await fetch(URL, {
+      method: "POST",
+      headers: { "Content-Type": "Application/json" },
+      body: JSON.stringify(newPost),
+    });
+    getPosts();
+  };
+
+  const updatePost = async (newPost, id) => {
+    await fetch(URL + id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+      body: JSON.stringify(newPost),
+    });
+    getPosts();
+  };
+
+  const deletePost = async (id) => {
+    await fetch(URL + id, {
+      method: "DELETE",
+    });
+    getPosts();
+  };
+
+  // const removePost = (post) => {
+  //   setPosts(posts.filter((p) => p.id !== post.id));
+  // };
+
+  const sortPosts = (sort) => {
+    setSelectedSort(sort);
   };
 
   const sortedPosts = useMemo(() => {
@@ -41,22 +78,6 @@ function App() {
   const sortedAndSearchedPosts = useMemo(() => {
     return sortedPosts.filter((post) => post.title.includes(searchQuery));
   }, [searchQuery, sortedPosts]);
-
-  const createPost = async (newPost) => {
-    await fetch(URL, {
-      method: "POST",
-      headers: { "Content-Type": "Application/json" },
-      body: JSON.stringify(newPost),
-    });
-    getPosts();
-  };
-  const removePost = (post) => {
-    setPosts(posts.filter((p) => p.id !== post.id));
-  };
-
-  const sortPosts = (sort) => {
-    setSelectedSort(sort);
-  };
 
   // run getPost
   useEffect(() => getPosts(), []);
@@ -84,7 +105,8 @@ function App() {
       </div>
       {posts.length !== 0 ? (
         <PostList
-          remove={removePost}
+          remove={deletePost}
+          // remove={removePost}
           posts={sortedAndSearchedPosts}
           title={"Index of JS Posts"}
         />
