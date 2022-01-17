@@ -1,6 +1,6 @@
 import React from "react";
 
-import MyButton from "../components/UI/button/MyButton";
+import Button from "@mui/material/Button";
 
 const PostItem = (props) => {
   return (
@@ -12,7 +12,9 @@ const PostItem = (props) => {
         <div>{props.post.body}</div>
       </div>
       <div className="post_btns">
-        <MyButton onClick={() => props.remove(props.post._id)}>Delete</MyButton>
+        <Button variant="outlined" onClick={() => props.remove(props.post._id)}>
+          Delete
+        </Button>
       </div>
     </div>
   );

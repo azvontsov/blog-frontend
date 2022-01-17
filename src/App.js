@@ -6,8 +6,14 @@ import "./styles/App.css";
 import Header from "./components/Header";
 import PostList from "./components/PostList";
 import PostForm from "./components/PostForm";
+
 import MySelect from "./components/UI/select/MySelect";
 import MyInput from "./components/UI/input/MyInput";
+import { Container, TextField } from "@mui/material";
+import Select from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import MenuItem from "@mui/material/MenuItem";
 
 function App() {
   const [posts, setPosts] = useState([
@@ -83,26 +89,51 @@ function App() {
   useEffect(() => getPosts(), []);
 
   return (
-    <div className="App">
+    <Container
+      sx={{
+        mt: "1rem",
+      }}
+    >
+      <Header />
+      <h1 style={{ marginTop: "3rem", alignItems: "center" }}>Create Post</h1>
       <PostForm create={createPost} />
-      <hr style={{ margin: "55px 0" }} />
       <div>
-        <MyInput
+        {/* SEARCHING */}
+        <TextField
+          label="search"
+          variant="standard"
+          fullWidth
+          sx={{
+            mt: "5rem",
+            mb: "2rem",
+          }}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Searching..."
         />
-
-        <MySelect
-          value={selectedSort}
-          onChange={sortPosts}
-          defaultValue="Sorting"
-          options={[
-            { value: "title", name: "by name" },
-            { value: "body", name: "by description" },
-          ]}
-        />
       </div>
+      <div>
+        {/* SORTING */}
+        <FormControl sx={{ width: "20%" }}>
+          <InputLabel id="demo-simple-select-label">Sorting</InputLabel>
+          <Select
+            value={selectedSort}
+            onChange={sortPosts}
+            defaultValue="Sorting"
+            options={[
+              { value: "title", name: "by name" },
+              { value: "body", name: "by description" },
+            ]}
+          >
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
+
+      {/* INDEX OF JS POSTS */}
+
       {posts.length !== 0 ? (
         <PostList
           remove={deletePost}
@@ -113,7 +144,7 @@ function App() {
       ) : (
         <h1 style={{ textAlign: "center" }}>No post founded</h1>
       )}
-    </div>
+    </Container>
   );
 }
 
