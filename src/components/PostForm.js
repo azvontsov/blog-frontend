@@ -26,6 +26,12 @@ const PostForm = ({ create }) => {
           type="text"
           placeholder="Post Description "
         />
+        <input
+          value={post.hashtags}
+          onChange={(e) => setPost({ ...post, hashtags: e.target.value })}
+          type="text"
+          placeholder="hashtags "
+        />
         <button onClick={addNewPost}>Create Post</button>
       </div>
     </form>

@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import PostList from "./components/PostList";
 import PostForm from "./components/PostForm";
 import MySelect from "./components/UI/select/MySelect";
+import PostFilter from "./components/PostFilter";
 
 function App() {
   const [posts, setPosts] = useState([
@@ -29,10 +30,9 @@ function App() {
       body: "Pig biltong ex pariatur. Nisi burgdoggen ad ipsum, nostrud beef anim consectetur alcatra. Meatball esse eiusmod beef ribs. Hamburger fugiat ground round, pork tri-tip dolore in spare ribs sed aliquip velit buffalo nulla bacon et. Tail sunt tongue prosciutto tri-tip fatback porchetta short ribs. Short ribs sirloin ut, kevin drumstick culpa corned beef shoulder salami beef beef ribs deserunt kielbasa in.",
     },
   ]);
-  const [selectedSort, setSelectedSort] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [filter, setFilter] = useState({ sort: "", query: "" });
 
-  // const URL = "http://localhost:3001/posts/";
+  const URL = "http://localhost:3001/posts/";
   // const URL = "https://blog-backend-az.herokuapp.com/posts/";
 
   // retrive all the posts
@@ -70,24 +70,21 @@ function App() {
   // const removePost = (post) => {
   //   setPosts(posts.filter((p) => p.id !== post.id));
 
-  const sortPosts = (sort) => {
-    setSelectedSort(sort);
-  };
   const sortedPosts = useMemo(() => {
     console.log("function worked");
-    if (selectedSort) {
+    if (filter.sort) {
       return [...posts].sort((a, b) =>
-        a[selectedSort].localeCompare(b[selectedSort])
+        a[filter.sort].localeCompare(b[filter.sort])
       );
     }
     return posts;
-  }, [selectedSort, posts]);
+  }, [filter.sort, posts]);
 
   const sortedAndSearchedPosts = useMemo(() => {
     return sortedPosts.filter((post) =>
-      post.title.toLowerCase().includes(searchQuery.toLowerCase())
+      post.title.toLowerCase().includes(filter.query.toLowerCase())
     );
-  }, [searchQuery, sortedPosts]);
+  }, [filter.query, sortedPosts]);
 
   // run getPost
   useEffect(() => getPosts(), []);
@@ -114,24 +111,7 @@ function App() {
               <PostForm create={createPost} />
             </div>
 
-            {/* SEARCHING */}
-            <div>
-              <input
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Searching..."
-              />
-              {/* SORTING */}
-              <MySelect
-                value={selectedSort}
-                onChange={sortPosts}
-                defaultValue="Sorting"
-                options={[
-                  { value: "title", name: "by name" },
-                  { value: "body", name: "by description" },
-                ]}
-              />
-            </div>
+            <PostFilter filter={filter} setFilter={setFilter} />
             {sortedAndSearchedPosts.length ? (
               <PostList
                 remove={deletePost}
