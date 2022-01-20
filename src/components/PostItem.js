@@ -1,7 +1,5 @@
 import React from "react";
 
-import Button from "@mui/material/Button";
-
 const PostItem = (props) => {
   return (
     <div className="post">
@@ -12,9 +10,7 @@ const PostItem = (props) => {
         <div>{props.post.body}</div>
       </div>
       <div className="post_btns">
-        <Button variant="outlined" onClick={() => props.remove(props.post._id)}>
-          Delete
-        </Button>
+        <button onClick={() => props.remove(props.post._id)}>Delete</button>
       </div>
     </div>
   );

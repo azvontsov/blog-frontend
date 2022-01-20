@@ -1,8 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import Button from "@mui/material/Button";
-import MyInput from "./UI/input/MyInput";
-import { TextField } from "@mui/material";
 
 const PostForm = ({ create }) => {
   const [post, setPost] = useState({ title: "", body: "" });
@@ -15,37 +12,20 @@ const PostForm = ({ create }) => {
 
   return (
     <form>
-      <TextField
-        label="Post Name"
-        variant="outlined"
-        fullWidth
+      <input
         value={post.title}
         onChange={(e) => setPost({ ...post, title: e.target.value })}
         type="text"
         placeholder="Post Name"
       />
 
-      <TextField
-        label="Post Description"
-        variant="outlined"
-        fullWidth
-        sx={{
-          mt: "1rem",
-        }}
+      <input
         value={post.body}
         onChange={(e) => setPost({ ...post, body: e.target.value })}
         type="text"
         placeholder="Post Description "
       />
-      <Button
-        sx={{
-          mt: "2rem",
-        }}
-        variant="outlined"
-        onClick={addNewPost}
-      >
-        Create Post
-      </Button>
+      <button onClick={addNewPost}>Create Post</button>
     </form>
   );
 };

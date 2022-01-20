@@ -1,29 +1,18 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import Container from "@mui/material/Container";
+import React from "react";
 
-export default function Header() {
+const Header = () => {
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-          ></IconButton>
-          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            BLOG
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </Container>
-    </AppBar>
+    <nav className="nav">
+      <div className="nav-logo-search">
+        <h1>LOGO</h1>
+        <input />
+      </div>
+      <div className="nav-login-create">
+        <h1>Log in</h1>
+        <button>Create account</button>
+      </div>
+    </nav>
   );
-}
+};
+
+export default Header;

@@ -6,14 +6,7 @@ import "./styles/App.css";
 import Header from "./components/Header";
 import PostList from "./components/PostList";
 import PostForm from "./components/PostForm";
-
 import MySelect from "./components/UI/select/MySelect";
-import MyInput from "./components/UI/input/MyInput";
-import { Container, TextField } from "@mui/material";
-import Select from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
-import MenuItem from "@mui/material/MenuItem";
 
 function App() {
   const [posts, setPosts] = useState([
@@ -21,10 +14,8 @@ function App() {
     { id: 2, title: "Python", body: "u" },
     { id: 3, title: "React", body: "j" },
   ]);
-
   const [selectedSort, setSelectedSort] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-
   const URL = "https://blog-backend-az.herokuapp.com/posts/";
 
   // retrive all the posts
@@ -35,7 +26,6 @@ function App() {
     console.log("getPost data", data);
     setPosts(data);
   };
-
   const createPost = async (newPost) => {
     await fetch(URL, {
       method: "POST",
@@ -44,7 +34,6 @@ function App() {
     });
     getPosts();
   };
-
   const updatePost = async (newPost, id) => {
     await fetch(URL + id, {
       method: "PUT",
@@ -55,22 +44,18 @@ function App() {
     });
     getPosts();
   };
-
   const deletePost = async (id) => {
     await fetch(URL + id, {
       method: "DELETE",
     });
     getPosts();
   };
-
   // const removePost = (post) => {
   //   setPosts(posts.filter((p) => p.id !== post.id));
-  // };
 
   const sortPosts = (sort) => {
     setSelectedSort(sort);
   };
-
   const sortedPosts = useMemo(() => {
     console.log("function worked");
     if (selectedSort) {
@@ -89,51 +74,28 @@ function App() {
   useEffect(() => getPosts(), []);
 
   return (
-    <Container
-      sx={{
-        mt: "1rem",
-      }}
-    >
+    <div className="App">
       <Header />
-      <h1 style={{ marginTop: "3rem", alignItems: "center" }}>Create Post</h1>
       <PostForm create={createPost} />
+
+      {/* SEARCHING */}
       <div>
-        {/* SEARCHING */}
-        <TextField
-          label="search"
-          variant="standard"
-          fullWidth
-          sx={{
-            mt: "5rem",
-            mb: "2rem",
-          }}
+        <input
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Searching..."
         />
-      </div>
-      <div>
-        {/* SORTING */}
-        <FormControl sx={{ width: "20%" }}>
-          <InputLabel id="demo-simple-select-label">Sorting</InputLabel>
-          <Select
-            value={selectedSort}
-            onChange={sortPosts}
-            defaultValue="Sorting"
-            options={[
-              { value: "title", name: "by name" },
-              { value: "body", name: "by description" },
-            ]}
-          >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </FormControl>
-      </div>
 
-      {/* INDEX OF JS POSTS */}
-
+        <MySelect
+          value={selectedSort}
+          onChange={sortPosts}
+          defaultValue="Sorting"
+          options={[
+            { value: "title", name: "by name" },
+            { value: "body", name: "by description" },
+          ]}
+        />
+      </div>
       {posts.length !== 0 ? (
         <PostList
           remove={deletePost}
@@ -144,7 +106,7 @@ function App() {
       ) : (
         <h1 style={{ textAlign: "center" }}>No post founded</h1>
       )}
-    </Container>
+    </div>
   );
 }
 
