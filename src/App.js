@@ -32,7 +32,7 @@ function App() {
   const [selectedSort, setSelectedSort] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const URL = "http://localhost:3001/posts/";
+  // const URL = "http://localhost:3001/posts/";
   // const URL = "https://blog-backend-az.herokuapp.com/posts/";
 
   // retrive all the posts
@@ -84,7 +84,9 @@ function App() {
   }, [selectedSort, posts]);
 
   const sortedAndSearchedPosts = useMemo(() => {
-    return sortedPosts.filter((post) => post.title.includes(searchQuery));
+    return sortedPosts.filter((post) =>
+      post.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
   }, [searchQuery, sortedPosts]);
 
   // run getPost
@@ -127,11 +129,10 @@ function App() {
                 options={[
                   { value: "title", name: "by name" },
                   { value: "body", name: "by description" },
-                  { value: "hashtags", name: "by hashtags" },
                 ]}
               />
             </div>
-            {posts.length !== 0 ? (
+            {sortedAndSearchedPosts.length ? (
               <PostList
                 remove={deletePost}
                 // remove={removePost}
@@ -139,10 +140,11 @@ function App() {
                 title={"Index of JS Posts"}
               />
             ) : (
-              <h1 style={{ textAlign: "center" }}>No post founded</h1>
+              <h1 style={{ textAlign: "center" }}>Posts were not found</h1>
             )}
           </div>
         </div>
+        <div class="sidebar-r">side-r</div>
         <div class="footer">Footer</div>
       </div>
     </div>

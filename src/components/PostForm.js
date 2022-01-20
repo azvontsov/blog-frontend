@@ -12,20 +12,22 @@ const PostForm = ({ create }) => {
 
   return (
     <form>
-      <input
-        value={post.title}
-        onChange={(e) => setPost({ ...post, title: e.target.value })}
-        type="text"
-        placeholder="Post Name"
-      />
+      <div className="input_field">
+        <input
+          value={post.title}
+          onChange={(e) => setPost({ ...post, title: e.target.value })}
+          type="text"
+          placeholder="Post Name"
+        />
 
-      <input
-        value={post.body}
-        onChange={(e) => setPost({ ...post, body: e.target.value })}
-        type="text"
-        placeholder="Post Description "
-      />
-      <button onClick={addNewPost}>Create Post</button>
+        <input
+          value={post.body}
+          onChange={(e) => setPost({ ...post, body: e.target.value })}
+          type="text"
+          placeholder="Post Description "
+        />
+        <button onClick={addNewPost}>Create Post</button>
+      </div>
     </form>
   );
 };
