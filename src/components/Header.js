@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useMemo } from "react";
 
-const Header = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-
+const Header = ({ filter, setFilter }) => {
   return (
     <nav className="nav">
       <div className="nav-logo-search">
         <h1>LOGO</h1>
         <input
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          value={filter.query}
+          onChange={(e) => setFilter({ ...filter, query: e.target.value })}
           placeholder="Searching..."
         />
       </div>

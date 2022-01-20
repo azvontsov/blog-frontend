@@ -20,7 +20,9 @@ nav h1 {
   margin-right: 3rem;
 }
 nav input {
-  width: 20rem;
+  padding: 0.4rem;
+  width: 65%;
+  border-radius: 0.5rem;
 }
 nav button {
   font-family: inherit;
@@ -30,7 +32,9 @@ nav button {
 .nav-logo-search {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 50%;
+
   margin-left: 2rem;
 }
 .nav-login-create {
@@ -47,6 +51,7 @@ nav button {
   background-color: white;
   border-radius: 0.4rem;
   margin: 1rem 3rem;
+  max-width: 80rem;
 
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -89,6 +94,9 @@ nav button {
   height: 1.7rem;
   width: 100%;
   margin-bottom: 1rem;
+}
+.sorting {
+  margin: 3rem 0 1rem 3rem;
 }
 
 /* CONTAINERS */

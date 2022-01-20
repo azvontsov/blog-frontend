@@ -93,7 +93,7 @@ function App() {
     <div className="App">
       <div className="container">
         <div class="header">
-          <Header />
+          <Header filter={filter} setFilter={setFilter} />
         </div>
 
         <div class="sidebar">
@@ -110,7 +110,6 @@ function App() {
             <div className="create_post">
               <PostForm create={createPost} />
             </div>
-
             <PostFilter filter={filter} setFilter={setFilter} />
             {sortedAndSearchedPosts.length ? (
               <PostList
