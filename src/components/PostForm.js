@@ -12,27 +12,29 @@ const PostForm = ({ create }) => {
 
   return (
     <form>
-      <div className="input_field">
-        <input
-          value={post.title}
-          onChange={(e) => setPost({ ...post, title: e.target.value })}
-          type="text"
-          placeholder="Post Name"
-        />
+      <div className="create_post">
+        <div className="input_field">
+          <input
+            value={post.title}
+            onChange={(e) => setPost({ ...post, title: e.target.value })}
+            type="text"
+            placeholder="Post Name"
+          />
 
-        <input
-          value={post.body}
-          onChange={(e) => setPost({ ...post, body: e.target.value })}
-          type="text"
-          placeholder="Post Description "
-        />
-        <input
-          value={post.hashtags}
-          onChange={(e) => setPost({ ...post, hashtags: e.target.value })}
-          type="text"
-          placeholder="hashtags "
-        />
-        <button onClick={addNewPost}>Create Post</button>
+          <input
+            value={post.body}
+            onChange={(e) => setPost({ ...post, body: e.target.value })}
+            type="text"
+            placeholder="Post Description "
+          />
+          <input
+            value={post.hashtags}
+            onChange={(e) => setPost({ ...post, hashtags: e.target.value })}
+            type="text"
+            placeholder="hashtags "
+          />
+          <button onClick={addNewPost}>Create Post</button>
+        </div>
       </div>
     </form>
   );

@@ -6,8 +6,10 @@ import "./styles/App.css";
 import Header from "./components/Header";
 import PostList from "./components/PostList";
 import PostForm from "./components/PostForm";
-import MySelect from "./components/UI/select/MySelect";
+
 import PostFilter from "./components/PostFilter";
+import Sidebar from "./components/Sidebar";
+import MyModal from "./components/UI/MyModal/MyModal";
 
 function App() {
   const [posts, setPosts] = useState([
@@ -30,7 +32,9 @@ function App() {
       body: "Pig biltong ex pariatur. Nisi burgdoggen ad ipsum, nostrud beef anim consectetur alcatra. Meatball esse eiusmod beef ribs. Hamburger fugiat ground round, pork tri-tip dolore in spare ribs sed aliquip velit buffalo nulla bacon et. Tail sunt tongue prosciutto tri-tip fatback porchetta short ribs. Short ribs sirloin ut, kevin drumstick culpa corned beef shoulder salami beef beef ribs deserunt kielbasa in.",
     },
   ]);
+
   const [filter, setFilter] = useState({ sort: "", query: "" });
+  const [modal, setModal] = useState(false);
 
   const URL = "http://localhost:3001/posts/";
   // const URL = "https://blog-backend-az.herokuapp.com/posts/";
@@ -42,6 +46,7 @@ function App() {
     const data = await response.json();
     console.log("getPost data", data);
     setPosts(data);
+    setModal(false);
   };
   const createPost = async (newPost) => {
     await fetch(URL, {
@@ -92,35 +97,24 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <div class="header">
-          <Header filter={filter} setFilter={setFilter} />
-        </div>
-
-        <div class="sidebar">
-          <a>#git</a>
-          <a>#productivity</a>
-          <a>#javascript</a>
-          <a>#typescript</a>
-          <a>#webdev</a>
-          <a>#react</a>
-        </div>
-
+        <Header filter={filter} setFilter={setFilter} />
+        <Sidebar />
         <div class="content">
           <div className="post_container">
-            <div className="create_post">
+            <button style={{ marginTop: 30 }} onClick={() => setModal(true)}>
+              Create Post
+            </button>
+            <MyModal visible={modal} setVisible={setModal}>
               <PostForm create={createPost} />
-            </div>
+            </MyModal>
+
             <PostFilter filter={filter} setFilter={setFilter} />
-            {sortedAndSearchedPosts.length ? (
-              <PostList
-                remove={deletePost}
-                // remove={removePost}
-                posts={sortedAndSearchedPosts}
-                title={"Index of JS Posts"}
-              />
-            ) : (
-              <h1 style={{ textAlign: "center" }}>Posts were not found</h1>
-            )}
+            <PostList
+              remove={deletePost}
+              // remove={removePost}
+              posts={sortedAndSearchedPosts}
+              title={"Index of JS Posts"}
+            />
           </div>
         </div>
         <div class="sidebar-r">side-r</div>
