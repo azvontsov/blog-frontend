@@ -2,12 +2,12 @@ import React from "react";
 import { useState } from "react";
 
 const PostForm = ({ create }) => {
-  const [post, setPost] = useState({ title: "", body: "" });
+  const [post, setPost] = useState({ title: "", body: "", tags: "" });
 
   const addNewPost = (e) => {
     e.preventDefault();
     create(post);
-    setPost({ title: "", body: "" });
+    setPost({ title: "", body: "", tags: "" });
   };
 
   return (
@@ -28,10 +28,10 @@ const PostForm = ({ create }) => {
             placeholder="Post Description "
           />
           <input
-            value={post.hashtags}
-            onChange={(e) => setPost({ ...post, hashtags: e.target.value })}
+            value={post.tags}
+            onChange={(e) => setPost({ ...post, tags: e.target.value })}
             type="text"
-            placeholder="hashtags "
+            placeholder="tags "
           />
           <button onClick={addNewPost}>Create Post</button>
         </div>
