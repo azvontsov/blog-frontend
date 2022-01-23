@@ -39,7 +39,6 @@ const Main = ({ filter, setFilter }) => {
   const getPosts = async () => {
     const response = await fetch(URL);
     const data = await response.json();
-    console.log("getPost data", data);
     setPosts(data);
     setModal(false);
 
@@ -69,8 +68,8 @@ const Main = ({ filter, setFilter }) => {
     });
     getPosts();
   };
+
   const sortedPosts = useMemo(() => {
-    console.log("function worked");
     if (filter.sort) {
       return [...posts].sort((a, b) =>
         a[filter.sort].localeCompare(b[filter.sort])
@@ -80,8 +79,11 @@ const Main = ({ filter, setFilter }) => {
   }, [filter.sort, posts]);
 
   const sortedAndSearchedPosts = useMemo(() => {
-    return sortedPosts.filter((post) =>
-      post.title.toLowerCase().includes(filter.query.toLowerCase())
+    return sortedPosts.filter(
+      (post) =>
+        post.title.toLowerCase().includes(filter.query.toLowerCase()) ||
+        post.body.toLowerCase().includes(filter.query.toLowerCase()) ||
+        post.tags.toLowerCase().includes(filter.query.toLowerCase())
     );
   }, [filter.query, sortedPosts]);
 
