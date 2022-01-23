@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
+import { login, logout } from "../services/firebase";
 
-const Header = ({ filter, setFilter }) => {
+const Header = ({ filter, setFilter, user }) => {
   return (
     <div class="header">
       <nav className="nav">
@@ -13,8 +14,22 @@ const Header = ({ filter, setFilter }) => {
           />
         </div>
         <div className="nav-login-create">
-          <h1>Log in</h1>
-          <button>Create account</button>
+          {user ? (
+            <>
+              <img
+                style={{
+                  height: "3.125rem",
+                  width: "3.125rem",
+                  borderRadius: "50%",
+                }}
+                src={user.photoURL}
+                alt={user.displayName}
+              />
+              <button onClick={logout}>Logout</button>
+            </>
+          ) : (
+            <button onClick={login}>Login</button>
+          )}
         </div>
       </nav>
     </div>

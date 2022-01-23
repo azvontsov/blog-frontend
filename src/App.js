@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { auth } from "./services/firebase";
 
 import "./styles/App.css";
 
@@ -97,7 +98,7 @@ function App() {
   // run getPost
   useEffect(() => getPosts(), []);
 
-  const mystyle = {
+  const createButtonStyle = {
     padding: "10px",
     width: "30rem",
     marginTop: "5rem",
@@ -108,14 +109,20 @@ function App() {
     borderRadius: ".4rem",
   };
 
+  // USERS
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => setUser(user));
+  }, []);
+
   return (
     <div className="App">
       <div className="container">
-        <Header filter={filter} setFilter={setFilter} />
+        <Header user={user} filter={filter} setFilter={setFilter} />
         <Sidebar />
         <div class="content">
           <div className="post_container">
-            <button style={mystyle} onClick={() => setModal(true)}>
+            <button style={createButtonStyle} onClick={() => setModal(true)}>
               Create Post
             </button>
             <MyModal visible={modal} setVisible={setModal}>
