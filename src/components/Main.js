@@ -6,7 +6,7 @@ import PostForm from "./PostForm";
 import PostFilter from "./PostFilter";
 import MyModal from "./UI/MyModal/MyModal";
 
-const Main = ({ filter, setFilter }) => {
+const Main = ({ filter, setFilter, userEmail }) => {
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -52,13 +52,13 @@ const Main = ({ filter, setFilter }) => {
     });
     getPosts();
   };
-  const updatePost = async (newPost, id) => {
-    await fetch(URL + id, {
+  const updatePost = async (post) => {
+    await fetch(URL + post._id, {
       method: "PUT",
       headers: {
         "Content-Type": "Application/json",
       },
-      body: JSON.stringify(newPost),
+      body: JSON.stringify(post),
     });
     getPosts();
   };
@@ -115,6 +115,8 @@ const Main = ({ filter, setFilter }) => {
           remove={deletePost}
           posts={sortedAndSearchedPosts}
           title={"Index of JS Posts"}
+          userEmail={userEmail}
+          updatePost={updatePost}
         />
       </div>
     </div>
