@@ -21,6 +21,7 @@ const Header = ({ filter, setFilter, user }) => {
                   height: "3.125rem",
                   width: "3.125rem",
                   borderRadius: "50%",
+                  marginRight: "1rem",
                 }}
                 src={user.photoURL}
                 alt={user.displayName}
