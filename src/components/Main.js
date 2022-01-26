@@ -5,6 +5,8 @@ import PostList from "./PostList";
 import PostForm from "./PostForm";
 import PostFilter from "./PostFilter";
 import MyModal from "./UI/MyModal/MyModal";
+import MyModalShow from "./UI/MyModalShow/MyModalShow";
+import ShowPost from "./ShowPost";
 
 const Main = ({ filter, setFilter, userEmail }) => {
   const [posts, setPosts] = useState([
@@ -29,6 +31,8 @@ const Main = ({ filter, setFilter, userEmail }) => {
   ]);
 
   const [modal, setModal] = useState(false);
+  const [show, setShow] = useState(false);
+  const [id, setId] = useState("");
   const [totalCount, setTotalCount] = useState(0);
 
   const URL = "http://localhost:3001/posts/";
@@ -41,6 +45,7 @@ const Main = ({ filter, setFilter, userEmail }) => {
     const data = await response.json();
     setPosts(data);
     setModal(false);
+    setShow(false);
 
     setTotalCount(response.headers["x-total-count"]);
   };
@@ -106,9 +111,13 @@ const Main = ({ filter, setFilter, userEmail }) => {
         <button style={createButtonStyle} onClick={() => setModal(true)}>
           Create Post
         </button>
+
         <MyModal visible={modal} setVisible={setModal}>
           <PostForm create={createPost} />
         </MyModal>
+        <MyModalShow visible={show} setVisible={setShow}>
+          <ShowPost posts={sortedAndSearchedPosts} id={id} />
+        </MyModalShow>
 
         <PostFilter filter={filter} setFilter={setFilter} />
         <PostList
@@ -117,6 +126,8 @@ const Main = ({ filter, setFilter, userEmail }) => {
           title={"Index of JS Posts"}
           userEmail={userEmail}
           updatePost={updatePost}
+          setShow={setShow}
+          setId={setId}
         />
       </div>
     </div>

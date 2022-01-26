@@ -2,7 +2,15 @@ import React from "react";
 import PostItem from "./PostItem";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-const PostList = ({ posts, title, remove, userEmail, updatePost }) => {
+const PostList = ({
+  posts,
+  title,
+  remove,
+  userEmail,
+  updatePost,
+  setShow,
+  setId,
+}) => {
   if (!posts.length) {
     return <h1 style={{ textAlign: "center" }}>Posts were not found</h1>;
   }
@@ -20,6 +28,8 @@ const PostList = ({ posts, title, remove, userEmail, updatePost }) => {
               key={post.id}
               userEmail={userEmail}
               updatePost={updatePost}
+              setShow={setShow}
+              setId={setId}
             />
           </CSSTransition>
         ))}

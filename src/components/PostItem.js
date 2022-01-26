@@ -2,12 +2,21 @@ import React from "react";
 import { FaHeart, FaComments } from "react-icons/fa";
 
 const PostItem = (props) => {
-  const { post, updatePost, userEmail } = props;
+  const { post, updatePost, userEmail, setShow, setId } = props;
   const likes = props.post.likes || [];
+  const helper = () => {
+    setShow(true);
+    setId(post._id);
+  };
+
   return (
     <div className="post">
       <div className="post_content">
-        <h2>
+        <h2
+          onClick={() => {
+            helper();
+          }}
+        >
           {props.number}. {post.title}
         </h2>
         <h5>{post.tags}</h5>
