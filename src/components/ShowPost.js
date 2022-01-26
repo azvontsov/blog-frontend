@@ -1,11 +1,14 @@
 import React from "react";
 
 const ShowPost = ({ posts, id, useMemo }) => {
+  const post = posts.find((post) => post._id === id);
+  if (!post) return null;
+
   return (
     <div>
-      {posts.map((post, index) => (
-        <div key={index}>{post._id === id ? (post.title, post.body) : ""}</div>
-      ))}
+      <h1>{post.title}</h1>
+      <p>{post.body}</p>
+      <h3>{post.tags}</h3>
     </div>
   );
 };
