@@ -24,8 +24,8 @@ function App() {
         <Main filter={filter} setFilter={setFilter} userEmail={user?.email} />
         <Sidebar />
 
-        <div class="sidebar-r">side-r</div>
-        <div class="footer">Footer</div>
+        <div className="sidebar-r">side-r</div>
+        <div className="footer">Footer</div>
       </div>
     </div>
   );

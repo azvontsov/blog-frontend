@@ -3,7 +3,7 @@ import { login, logout } from "../services/firebase";
 
 const Header = ({ filter, setFilter, user }) => {
   return (
-    <div class="header">
+    <div className="header">
       <nav className="nav">
         <div className="nav-logo-search">
           <h1>LOGO</h1>

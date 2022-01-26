@@ -20,7 +20,7 @@ const PostItem = (props) => {
           {props.number}. {post.title}
         </h2>
         <h5>{post.tags}</h5>
-        <div>{post.body}</div>
+        {/* <div>{post.body}</div> */}
       </div>
       <br />
       <div className="post_footer">

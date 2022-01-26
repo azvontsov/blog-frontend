@@ -12,29 +12,30 @@ const Main = ({ filter, setFilter, userEmail }) => {
   const [posts, setPosts] = useState([
     {
       id: 1,
-      title: "Frontend Challenges: Front-end Engineer Assignment",
-      tags: "#react",
-      body: "The original post was published at iamtk.co. This is part of the Frontend Challenges Series. Today I finished a frontend challenge and I had a blast working on it. There were so many interesting concepts I debated with myself while designing and implementing the feature, so I was eager to document and share everything I learned through this entire journey.",
+      title: "ReactJS Vs NodeJS : Better for app development in 2022",
+      tags: "#javascript #webdev #programming #react",
+      body: "Nowadays business globe has actually been boosted with several parts of web app development. If we think 2021, vast business have actually built their web applications to get substantial development. As necessary, it goes without stating that this year of 2022 will also enhance the application advancement industry. Hence if you prefer to develop an internet application, the programming language is the most significant point to assume. For internet app advancement JavaScript is just one of one of the most popular languages as well as there are various JavaScript structures to pick from. Remarkably, Node js as well as Respond js are the popular options available, but if you are perplexed to recognize which one is better. For your examination, we've prepared a well-defined summary of Node js vs React js with its features. Allow's read this post to learn which is better for Web application trends in 2022. What is ReactJS? A JavaScript library for creating interface. Respond makes it easy to make interactive UIs. Constructs encapsulated functions that handle their very own condition, then creates them to make complex UIs. Respond JS was originally developed by Jordan Walke. Today, ReactJS development has more than a thousand open source advocates. React authorizations you to user interface with other collections and structures. React can likewise influence the web server utilizing Node and power mobile applications utilizing React Native. Because element reasoning is made up in JavaScript rather than templates, you can easily offer abundant information with your app and also maintain the state out of the DOM. React js was founded in 2003 Node js was launched in 2009. Reactjs development mostly utilized in Client-sideUsed for server-side development and also client-side growth. Created with polished Vanilla JavaScriptWritten in C, C++, and also JavaScript. Sustains both android & web with the opening of react-native Node js sustains just web. No microservices as well as API supportMicro-services as well as API can be built with nodeJS. Utilized to make a scalable HTTP web server using Express or Simple HTTP moduleUsed to create single-page applications. Verdict: In this talk of Node js vs Respond js, currently you might have gotten some clear-cut clarification of both. Basically, Node.js development is best if you want to create a server-side internet app, and also React js is most ideal for making a web application development task with growing levels like energetic inputs and switches. We've prepared a difference between React js and Node js with its attributes for your future task principles. Allow's choose in between the two relying on your requirements`",
     },
     {
       id: 2,
-      title: "What is Module?",
-      tags: "#python",
-      body: "A module is a file containing Python definitions and statements which we can use in other Python programs. A module is simply a “Python file” which contains code(functions, classes,lists etc) we can reuse in multiple Python programs. Modules in Python can be of two types. Built-in Modules. User-defined Modules. Modules allows us to use the functionality we need when we need it, and it keeps our code cleaner.",
+      title:
+        "React local development and testing mocking with msw and mss/data",
+      tags: "#react #msw #javascript #typescript",
+      body: "Background Recently, I found myself needing to mock CRUD operations from an API. At that time, the API was being developed by another engineer. We agreed on the API specs which allowed me to progress on building the UI.During development, the mocked APIs are useful to build to mock the actual API implementation. During testing, it is also valuable to be able to test the actual user interactions. There are amazing blog posts by Kent C. Dodds (author of @testing-library/react) on avoiding testing implementation details and mocking the actual API over mocking fetch. In this article, we will go though the approach I went to building this mock server using msw by building a simple pet dog CRUD application, that has the following features: List all dogs, Create a dog, Update a dog, Delete a dog, Additionally, data can be stored in-memory database provided by a standalone data library msw/datajs. This provides the capabilities of describing our data, persisting them in-memory and read/write operations. We will explore writing REST API handlers backed by the data library methods. Setup. In this article, l will be building a simple CRUD React application. To help quickly bootstrap my application I will be using the vitejs react-ts template and Chakra UI components. To help simplify and abstract our data-fetching and manage server state, react-query will be used. For this demo, we will need to install the msw libraries and a mock generator faker. At the time of writing, the latest version of faker has “endgamed”. For this post, we’ll use version 5.5.3, which still works.",
     },
     {
       id: 3,
-      title: "Create Ozark's hypnotizing title animation with Greensock (GSAP)",
-      tags: "#javascript",
-      body: "To mark the occasion of the TV show Ozark releasing its fourth season, I created the title sequence as a web animation. For some viewers, a show's title sequence is nothing more than a minute long segment to be skipped past,or used as an opportunity to squeeze in a quick activity before the show starts, but they are missing out in the case of Ozark. The show is known for its dynamic plot and stark imagery, and if you pay close attention to the show's brief title sequence, you can appreciate how it complements the tone of the show.",
+      title: "Five Ways to Use Python in Your Business",
+      tags: "#python",
+      body: "One of the main reasons Python is such a massive hit with programmers is that it is extremely versatile. It can be used for web development, audio and video processing, and - one of the most popular uses - developing games. Many people also use Python as a way to create applications, from simple database applications to complex systems that interact with multiple servers. The potential uses for Python in the business world are endless, as it is both powerful and easy to understand. Here are five ways to use Python in your business: If you are new to Python, the crash course is a good start. <br /> Interactive Web Applications Python’s versatility shows in its ability to communicate across many different platforms and operating systems. For example, you can create a web app using Flask or Django which works on Windows, Linux, or OS X. The only prerequisite is Python 3. Finally, an application can run on pretty much any machine that has an internet connection and supports Python.",
     },
   ]);
 
   const [modal, setModal] = useState(false);
   const [show, setShow] = useState(false);
-  const [id, setId] = useState("");
   const [totalCount, setTotalCount] = useState(0);
 
+  const [id, setId] = useState("");
   const URL = "http://localhost:3001/posts/";
   // const URL = "https://blog-backend-az.herokuapp.com/posts/";
 
@@ -52,7 +53,9 @@ const Main = ({ filter, setFilter, userEmail }) => {
   const createPost = async (newPost) => {
     await fetch(URL, {
       method: "POST",
-      headers: { "Content-Type": "Application/json" },
+      headers: {
+        "Content-Type": "Application/json",
+      },
       body: JSON.stringify(newPost),
     });
     getPosts();
@@ -84,12 +87,16 @@ const Main = ({ filter, setFilter, userEmail }) => {
   }, [filter.sort, posts]);
 
   const sortedAndSearchedPosts = useMemo(() => {
-    return sortedPosts.filter(
-      (post) =>
-        post.title.toLowerCase().includes(filter.query.toLowerCase()) ||
-        post.body.toLowerCase().includes(filter.query.toLowerCase()) ||
-        post.tags.toLowerCase().includes(filter.query.toLowerCase())
-    );
+    return sortedPosts.filter((post) => {
+      return (
+        (post.title &&
+          post.title.toLowerCase().includes(filter.query.toLowerCase())) ||
+        (post.body &&
+          post.body.toLowerCase().includes(filter.query.toLowerCase())) ||
+        (post.tags &&
+          post.tags.toLowerCase().includes(filter.query.toLowerCase()))
+      );
+    });
   }, [filter.query, sortedPosts]);
 
   // run getPost
@@ -106,19 +113,17 @@ const Main = ({ filter, setFilter, userEmail }) => {
     borderRadius: ".4rem",
   };
   return (
-    <div class="content">
+    <div className="content">
       <div className="post_container">
         <button style={createButtonStyle} onClick={() => setModal(true)}>
           Create Post
         </button>
-
         <MyModal visible={modal} setVisible={setModal}>
           <PostForm create={createPost} />
         </MyModal>
         <MyModalShow visible={show} setVisible={setShow}>
           <ShowPost posts={sortedAndSearchedPosts} id={id} />
         </MyModalShow>
-
         <PostFilter filter={filter} setFilter={setFilter} />
         <PostList
           remove={deletePost}

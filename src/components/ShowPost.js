@@ -1,11 +1,10 @@
 import React from "react";
 
-const ShowPost = ({ posts, id }) => {
-  console.log(id);
+const ShowPost = ({ posts, id, useMemo }) => {
   return (
     <div>
       {posts.map((post, index) => (
-        <h1>{post._id === id ? (post.title, post.body) : ""}</h1>
+        <div key={index}>{post._id === id ? (post.title, post.body) : ""}</div>
       ))}
     </div>
   );
