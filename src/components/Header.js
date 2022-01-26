@@ -1,12 +1,20 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { login, logout } from "../services/firebase";
+import { FaConfluence } from "react-icons/fa";
 
 const Header = ({ filter, setFilter, user }) => {
   return (
     <div className="header">
       <nav className="nav">
         <div className="nav-logo-search">
-          <h1>LOGO</h1>
+          <FaConfluence
+            style={{
+              height: "3rem",
+              width: "3rem",
+              marginLeft: "2rem",
+            }}
+          />
+
           <input
             value={filter.query}
             onChange={(e) => setFilter({ ...filter, query: e.target.value })}

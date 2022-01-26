@@ -22,7 +22,15 @@ const PostItem = (props) => {
         <h5>{post.tags}</h5>
         <div>
           {`${post.body.substring(0, 350)}`}
-          <a href="#"> Read more</a>
+          <a
+            href="#"
+            onClick={() => {
+              helper();
+            }}
+          >
+            {" "}
+            Read more
+          </a>
         </div>
       </div>
       <br />

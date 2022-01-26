@@ -1,7 +1,7 @@
 import React from "react";
 import { FaHeart, FaComments } from "react-icons/fa";
 
-const ShowPost = ({ posts, id, updatePost, userEmail }) => {
+const ShowPost = ({ posts, id, updatePost, userEmail, remove }) => {
   const post = posts.find((post) => post._id === id);
   if (!post) return null;
 
@@ -14,7 +14,17 @@ const ShowPost = ({ posts, id, updatePost, userEmail }) => {
         <p>{post.body}</p>
         <h5>{post.tags}</h5>
       </div>
-      <div className="reactions">
+      <div
+        className="reactions"
+        style={{
+          margin: "1rem 0 1rem 0",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
+        }}
+      >
         {likes.includes(userEmail) ? (
           <a
             onClick={() =>
@@ -38,6 +48,9 @@ const ShowPost = ({ posts, id, updatePost, userEmail }) => {
             <FaHeart style={{ color: "black" }} />
           </a>
         )}
+        <div className="post_btns">
+          <button onClick={() => remove(post._id)}>Delete</button>
+        </div>
       </div>
     </>
   );

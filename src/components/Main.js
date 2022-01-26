@@ -122,7 +122,15 @@ const Main = ({ filter, setFilter, userEmail }) => {
           <PostForm create={createPost} />
         </MyModal>
         <MyModalShow visible={show} setVisible={setShow}>
-          <ShowPost posts={sortedAndSearchedPosts} id={id} />
+          <ShowPost
+            posts={sortedAndSearchedPosts}
+            id={id}
+            userEmail={userEmail}
+            updatePost={updatePost}
+            remove={deletePost}
+            setShow={setShow}
+            setId={setId}
+          />
         </MyModalShow>
         <PostFilter filter={filter} setFilter={setFilter} />
         <PostList

@@ -13,7 +13,6 @@ const PostFilter = ({ filter, setFilter }) => {
         options={[
           { value: "title", name: "by name" },
           { value: "body", name: "by description" },
-          { value: "tags", name: "by tags" },
         ]}
       />
     </div>
