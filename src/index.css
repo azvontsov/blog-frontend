@@ -60,6 +60,16 @@ nav button {
 .post_content h5 {
   margin: 1rem 0;
 }
+.show-card {
+  max-height: 800px;
+  overflow-x: scroll;
+}
+.show-card h1 {
+  margin-bottom: 2rem;
+}
+.show-card p {
+  margin-bottom: 1rem;
+}
 
 .post_footer {
   margin: 1rem 0 1rem 0;
