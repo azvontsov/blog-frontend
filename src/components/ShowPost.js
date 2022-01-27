@@ -73,13 +73,6 @@ const ShowPost = ({
         </div>
         <div className="post_btns">
           <button onClick={() => remove(post._id)}>Delete</button>
-          <button
-            onClick={() => {
-              helper();
-            }}
-          >
-            Edit Post
-          </button>
         </div>
       </div>
     </>
