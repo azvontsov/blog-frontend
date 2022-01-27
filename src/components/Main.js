@@ -46,7 +46,7 @@ const Main = ({ filter, setFilter, userEmail }) => {
     const data = await response.json();
     setPosts(data);
     setModal(false);
-    setShow(false);
+    // setShow(false);
 
     setTotalCount(response.headers["x-total-count"]);
   };
@@ -69,6 +69,7 @@ const Main = ({ filter, setFilter, userEmail }) => {
       body: JSON.stringify(post),
     });
     getPosts();
+    // setShow(true);
   };
   const deletePost = async (id) => {
     await fetch(URL + id, {
