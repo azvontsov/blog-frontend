@@ -65,9 +65,11 @@ const PostItem = (props) => {
 
           <h5>5 comments</h5>
         </div>
-        <div className="post_btns">
-          <button onClick={() => props.remove(post._id)}>Delete</button>
-        </div>
+        {/* <div className="post_btns">
+          <button disabled onClick={() => props.remove(post._id)}>
+            Delete
+          </button>
+        </div> */}
       </div>
     </div>
   );

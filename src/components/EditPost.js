@@ -1,7 +1,7 @@
 import React from "react";
 import { FaHeart, FaComments } from "react-icons/fa";
 
-const ShowPost = ({
+const EditPost = ({
   posts,
   id,
   updatePost,
@@ -86,4 +86,4 @@ const ShowPost = ({
   );
 };
 
-export default ShowPost;
+export default EditPost;
