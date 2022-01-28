@@ -13,6 +13,7 @@ const ShowPost = ({
 }) => {
   const [edit, setEdit] = useState(false);
   const post = posts.find((post) => post._id === id);
+  console.log(post);
   // const [form, setForm] = useState({
 
   //   title: "",
@@ -48,17 +49,40 @@ const ShowPost = ({
   return (
     <>
       {editForm ? (
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <input
             value={post.title}
+            style={{
+              minHeight: "30px",
+              fontSize: "1rem",
+              fontFamily: "inherit",
+              padding: ".5rem",
+              marginBottom: "1rem",
+            }}
             onChange={handleChange}
             type="text"
             name="title"
             placeholder="Post Name"
           />
           <textarea
-            rows="20"
-            cols="100"
+            // rows="20"
+            // cols="100"
+            style={{
+              minWidth: "100%",
+              maxWidth: "100%",
+              minHeight: "300px",
+              padding: ".5rem",
+              overflowX: "scroll",
+              fontSize: "1rem",
+              fontFamily: "inherit",
+              marginBottom: "1rem",
+            }}
             value={post.body}
             onChange={handleChange}
             type="text"
@@ -67,6 +91,13 @@ const ShowPost = ({
           />
           <input
             value={post.tags}
+            style={{
+              minHeight: "30px",
+              fontSize: "1rem",
+              fontFamily: "inherit",
+              padding: ".5rem",
+              marginBottom: "1rem",
+            }}
             onChange={handleChange}
             type="text"
             name="tags"
