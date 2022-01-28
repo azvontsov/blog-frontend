@@ -61,7 +61,6 @@ const Main = ({ filter, setFilter, userEmail }) => {
     getPosts();
   };
   const updatePost = async (post) => {
-    console.log(post);
     await fetch(URL + post._id, {
       method: "PUT",
       headers: {
