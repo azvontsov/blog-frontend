@@ -11,7 +11,7 @@ const ShowPost = ({
   setShow,
   setId,
 }) => {
-  const [edit, setEdit] = useState(false);
+  // const [edit, setEdit] = useState(false);
   const post = posts.find((post) => post._id === id);
   console.log(post);
   // const [form, setForm] = useState({
@@ -21,10 +21,15 @@ const ShowPost = ({
   //   tags: "",
   // });
   const [editForm, setEditForm] = useState(post);
+  const [commentForm, setCommentForm] = useState(post);
 
   const handleChange = (e) => {
     setEditForm({
       ...editForm,
+      [e.target.title]: e.target.value,
+    });
+    setCommentForm({
+      ...commentForm,
       [e.target.title]: e.target.value,
     });
   };
@@ -45,6 +50,7 @@ const ShowPost = ({
 
   if (!post) return null;
   const likes = post.likes || [];
+  const comments = post.comments || [];
 
   return (
     <>
@@ -103,15 +109,7 @@ const ShowPost = ({
             name="tags"
             placeholder="tags "
           />
-          <button
-            onClick={() =>
-              updatePost({
-                ...editForm,
-              })
-            }
-          >
-            Save Changes
-          </button>
+
           <input type="submit" value="Update Post" />
         </form>
       ) : (
@@ -121,6 +119,43 @@ const ShowPost = ({
           <h5>{post.tags}</h5>
         </div>
       )}
+      {/* COMMENT FORM */}
+
+      {commentForm ? (
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginTop: "4rem",
+          }}
+        >
+          <textarea
+            value={post.comments}
+            style={{
+              minWidth: "100%",
+              maxWidth: "100%",
+              minHeight: "100px",
+              padding: ".5rem",
+              overflowX: "scroll",
+              fontSize: "1rem",
+              fontFamily: "inherit",
+              marginBottom: "1rem",
+            }}
+            onChange={handleChange}
+            type="text"
+            name="Your comment here"
+            placeholder="comments "
+          />
+
+          <input type="submit" value="Update Post" />
+        </form>
+      ) : (
+        <div className="comment-card">
+          <h5>{post.comments}</h5>
+        </div>
+      )}
+      {/* COMMENT FORM END */}
       <div
         className="reactions"
         style={{
@@ -163,6 +198,14 @@ const ShowPost = ({
             </a>
           )}
           <h5 style={{ marginLeft: "1rem" }}>{likes.length} reactions</h5>
+
+          <h5
+            style={{
+              marginLeft: "1rem",
+            }}
+          >
+            {comments.length} comments
+          </h5>
         </div>
 
         <div className="post_btns">
@@ -174,6 +217,25 @@ const ShowPost = ({
               <button onClick={() => remove(post._id)}>Delete</button>
             </div>
           )}
+          {commentForm ? (
+            <button onClick={() => setCommentForm(false)}>Cancel</button>
+          ) : (
+            <div>
+              <button onClick={() => setCommentForm(true)}>Comment</button>
+            </div>
+          )}
+
+          {/* <button
+            style={{
+              marginTop: "3rem",
+              background: "green",
+              padding: ".5rem",
+              borderRadius: ".2rem",
+              border: "none",
+            }}
+          >
+            Comment
+          </button> */}
         </div>
       </div>
     </>
