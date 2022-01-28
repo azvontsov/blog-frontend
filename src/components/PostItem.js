@@ -4,6 +4,7 @@ import { FaHeart, FaComments } from "react-icons/fa";
 const PostItem = (props) => {
   const { post, updatePost, userEmail, setShow, setId } = props;
   const likes = props.post.likes || [];
+  const comments = props.post.comments || [];
   const helper = () => {
     setShow(true);
     setId(post._id);
@@ -61,9 +62,31 @@ const PostItem = (props) => {
           )}
 
           <h5>{likes.length} reactions</h5>
-          <FaComments />
+          {comments.includes(userEmail) ? (
+            <a
+              onClick={() =>
+                updatePost({
+                  ...post,
+                  comments: comments.filter((email) => email != userEmail),
+                })
+              }
+            >
+              <FaComments style={{ color: "green" }} />
+            </a>
+          ) : (
+            <a
+              onClick={() =>
+                updatePost({
+                  ...post,
+                  comments: [...comments, userEmail],
+                })
+              }
+            >
+              <FaComments style={{ color: "black" }} />
+            </a>
+          )}
 
-          <h5>5 comments</h5>
+          <h5>{comments.length} comments</h5>
         </div>
         {/* <div className="post_btns">
           <button disabled onClick={() => props.remove(post._id)}>

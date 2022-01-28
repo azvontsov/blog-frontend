@@ -46,7 +46,7 @@ const Main = ({ filter, setFilter, userEmail }) => {
     const data = await response.json();
     setPosts(data);
     setModal(false);
-    setShow(false);
+    // setShow(false);
 
     setTotalCount(response.headers["x-total-count"]);
   };
@@ -61,6 +61,7 @@ const Main = ({ filter, setFilter, userEmail }) => {
     getPosts();
   };
   const updatePost = async (post) => {
+    console.log(post);
     await fetch(URL + post._id, {
       method: "PUT",
       headers: {
@@ -69,7 +70,9 @@ const Main = ({ filter, setFilter, userEmail }) => {
       body: JSON.stringify(post),
     });
     getPosts();
+    // setShow(true);
   };
+
   const deletePost = async (id) => {
     await fetch(URL + id, {
       method: "DELETE",

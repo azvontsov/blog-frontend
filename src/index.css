@@ -164,9 +164,11 @@ nav button {
   text-align: center;
   padding-top: 5rem;
 }
-.sidebar a {
+.sidebar button {
   margin-top: 1rem;
   font-size: 1.5rem;
+  background: none;
+  border: none;
 }
 .footer {
   background-color: darkmagenta;

@@ -22,7 +22,7 @@ function App() {
       <div className="container">
         <Header user={user} filter={filter} setFilter={setFilter} />
         <Main filter={filter} setFilter={setFilter} userEmail={user?.email} />
-        <Sidebar />
+        <Sidebar filter={filter} setFilter={setFilter} />
 
         <div className="sidebar-r">side-r</div>
         <div className="footer">Footer</div>
