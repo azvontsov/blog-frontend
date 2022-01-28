@@ -7,65 +7,81 @@ const ShowPost = ({
   updatePost,
   userEmail,
   remove,
-  edit,
+
   setShow,
   setId,
 }) => {
-  const [editing, setEditing] = useState(false);
+  const [edit, setEdit] = useState(false);
   const post = posts.find((post) => post._id === id);
-  const [form, setForm] = useState({
-    title: "",
-    body: "",
-    tags: "",
-  });
+  // const [form, setForm] = useState({
+
+  //   title: "",
+  //   body: "",
+  //   tags: "",
+  // });
+  const [editForm, setEditForm] = useState(post);
+
+  const handleChange = (e) => {
+    setEditForm({
+      ...editForm,
+      [e.target.title]: e.target.value,
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updatePost(editForm, id);
+  };
+
+  // const helper = async () => {
+  //   await setForm({
+  //     title: post.title,
+  //     body: post.body,
+  //     tags: post.tags,
+  //   });
+  //   setShow(true);
+  //   setId(post._id);
+  // };
 
   if (!post) return null;
-
   const likes = post.likes || [];
-
-  const helper = async () => {
-    await setForm({
-      title: post.title,
-      body: post.body,
-      tags: post.tags,
-    });
-    setShow(true);
-    setId(post._id);
-  };
 
   return (
     <>
-      {editing ? (
-        <form>
+      {editForm ? (
+        <form onSubmit={handleSubmit}>
           <input
-            value={form.title}
-            onChange={(e) => setForm({ ...form, title: e.target.value })}
+            value={post.title}
+            onChange={handleChange}
             type="text"
+            name="title"
             placeholder="Post Name"
           />
           <textarea
-            rows="50"
+            rows="20"
             cols="100"
-            value={form.body}
-            onChange={(e) => setForm({ ...form, body: e.target.value })}
+            value={post.body}
+            onChange={handleChange}
             type="text"
+            name="body"
             placeholder="Post Description "
           />
           <input
-            value={form.tags}
-            onChange={(e) => setForm({ ...form, tags: e.target.value })}
+            value={post.tags}
+            onChange={handleChange}
             type="text"
+            name="tags"
             placeholder="tags "
           />
           <button
             onClick={() =>
               updatePost({
-                ...form,
+                ...editForm,
               })
             }
           >
             Save Changes
           </button>
+          <input type="submit" value="Update Post" />
         </form>
       ) : (
         <div className="show-card">
@@ -119,11 +135,11 @@ const ShowPost = ({
         </div>
 
         <div className="post_btns">
-          {editing ? (
-            <button onClick={() => setEditing(false)}>Cancel</button>
+          {editForm ? (
+            <button onClick={() => setEditForm(false)}>Cancel</button>
           ) : (
             <div>
-              <button onClick={() => setEditing(true)}>Edit</button>
+              <button onClick={() => setEditForm(true)}>Edit</button>
               <button onClick={() => remove(post._id)}>Delete</button>
             </div>
           )}

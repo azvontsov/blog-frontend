@@ -71,6 +71,7 @@ const Main = ({ filter, setFilter, userEmail }) => {
     getPosts();
     // setShow(true);
   };
+
   const deletePost = async (id) => {
     await fetch(URL + id, {
       method: "DELETE",
