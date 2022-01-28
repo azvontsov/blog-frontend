@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaHeart, FaComments } from "react-icons/fa";
 
 const ShowPost = ({
@@ -11,46 +11,47 @@ const ShowPost = ({
   setShow,
   setId,
 }) => {
-  // const [edit, setEdit] = useState(false);
   const post = posts.find((post) => post._id === id);
-  console.log(post);
-  // const [form, setForm] = useState({
 
-  //   title: "",
-  //   body: "",
-  //   tags: "",
-  // });
-  const [editForm, setEditForm] = useState(post);
-  const [commentForm, setCommentForm] = useState(post);
+  const [editForm, setEditForm] = useState(false);
+  const [editPost, setEditPost] = useState(post);
+  const [commentForm, setCommentForm] = useState(false);
+  const [editComment, setEditComment] = useState("");
+
+  useEffect(() => {
+    setEditPost(post);
+  }, [post]);
 
   const handleChange = (e) => {
-    setEditForm({
-      ...editForm,
-      [e.target.title]: e.target.value,
-    });
-    setCommentForm({
-      ...commentForm,
-      [e.target.title]: e.target.value,
+    setEditPost({
+      ...editPost,
+      [e.target.name]: e.target.value,
     });
   };
+
+  const handleChangeComment = (e) => {
+    setEditComment(e.target.value);
+  };
+
   const handleSubmit = (e) => {
+    console.log("submitting", editPost);
     e.preventDefault();
-    updatePost(editForm, id);
+    const postToSubmit =
+      editComment == ""
+        ? editPost
+        : {
+            ...editPost,
+            comments: [...(editPost.comments || []), editComment],
+          };
+    updatePost(postToSubmit);
+    setCommentForm(false);
+    setEditForm(false);
+    setEditComment("");
   };
 
-  // const helper = async () => {
-  //   await setForm({
-  //     title: post.title,
-  //     body: post.body,
-  //     tags: post.tags,
-  //   });
-  //   setShow(true);
-  //   setId(post._id);
-  // };
-
-  if (!post) return null;
-  const likes = post.likes || [];
-  const comments = post.comments || [];
+  if (!editPost) return null;
+  const likes = editPost.likes || [];
+  const comments = editPost.comments || [];
 
   return (
     <>
@@ -63,7 +64,7 @@ const ShowPost = ({
           }}
         >
           <input
-            value={post.title}
+            value={editPost.title}
             style={{
               minHeight: "30px",
               fontSize: "1rem",
@@ -77,8 +78,6 @@ const ShowPost = ({
             placeholder="Post Name"
           />
           <textarea
-            // rows="20"
-            // cols="100"
             style={{
               minWidth: "100%",
               maxWidth: "100%",
@@ -89,14 +88,14 @@ const ShowPost = ({
               fontFamily: "inherit",
               marginBottom: "1rem",
             }}
-            value={post.body}
+            value={editPost.body}
             onChange={handleChange}
             type="text"
             name="body"
             placeholder="Post Description "
           />
           <input
-            value={post.tags}
+            value={editPost.tags}
             style={{
               minHeight: "30px",
               fontSize: "1rem",
@@ -114,14 +113,18 @@ const ShowPost = ({
         </form>
       ) : (
         <div className="show-card">
-          <h1>{post.title}</h1>
-          <p>{post.body}</p>
-          <h5>{post.tags}</h5>
+          <h1>{editPost.title}</h1>
+          <p>{editPost.body}</p>
+          <h5>{editPost.tags}</h5>
         </div>
       )}
       {/* COMMENT FORM */}
-
-      {commentForm ? (
+      <div className="comment-card">
+        {comments.map((comment, index) => {
+          return <h5>{comment}</h5>;
+        })}
+      </div>
+      {commentForm && (
         <form
           onSubmit={handleSubmit}
           style={{
@@ -131,7 +134,7 @@ const ShowPost = ({
           }}
         >
           <textarea
-            value={post.comments}
+            value={editComment}
             style={{
               minWidth: "100%",
               maxWidth: "100%",
@@ -142,18 +145,39 @@ const ShowPost = ({
               fontFamily: "inherit",
               marginBottom: "1rem",
             }}
-            onChange={handleChange}
+            onChange={handleChangeComment}
             type="text"
             name="Your comment here"
             placeholder="comments "
           />
 
-          <input type="submit" value="Update Post" />
+          <input
+            type="submit"
+            value="Save comment"
+            style={{
+              width: "30%",
+              backgroundColor: "green",
+              border: "none",
+              padding: ".4rem",
+              borderRadius: ".2rem",
+              color: "white",
+            }}
+          />
+          <input
+            type="submit"
+            value="Cancel"
+            style={{
+              width: "30%",
+              backgroundColor: "red",
+              border: "none",
+              padding: ".4rem",
+              borderRadius: ".2rem",
+              color: "white",
+              marginTop: "1rem",
+            }}
+            onClick={() => setCommentForm(false)}
+          />
         </form>
-      ) : (
-        <div className="comment-card">
-          <h5>{post.comments}</h5>
-        </div>
       )}
       {/* COMMENT FORM END */}
       <div
@@ -178,7 +202,7 @@ const ShowPost = ({
             <a
               onClick={() =>
                 updatePost({
-                  ...post,
+                  ...editPost,
                   likes: likes.filter((email) => email != userEmail),
                 })
               }
@@ -189,7 +213,7 @@ const ShowPost = ({
             <a
               onClick={() =>
                 updatePost({
-                  ...post,
+                  ...editPost,
                   likes: [...likes, userEmail],
                 })
               }
@@ -214,28 +238,27 @@ const ShowPost = ({
           ) : (
             <div>
               <button onClick={() => setEditForm(true)}>Edit</button>
-              <button onClick={() => remove(post._id)}>Delete</button>
+              <button onClick={() => remove(editPost._id)}>Delete</button>
             </div>
           )}
           {commentForm ? (
             <button onClick={() => setCommentForm(false)}>Cancel</button>
           ) : (
             <div>
-              <button onClick={() => setCommentForm(true)}>Comment</button>
+              <button
+                onClick={() => setCommentForm(true)}
+                style={{
+                  marginTop: "2rem",
+                  backgroundColor: "green",
+                  border: "none",
+                  padding: ".4rem",
+                  borderRadius: ".2rem",
+                }}
+              >
+                Comment
+              </button>
             </div>
           )}
-
-          {/* <button
-            style={{
-              marginTop: "3rem",
-              background: "green",
-              padding: ".5rem",
-              borderRadius: ".2rem",
-              border: "none",
-            }}
-          >
-            Comment
-          </button> */}
         </div>
       </div>
     </>
