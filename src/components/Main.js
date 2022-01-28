@@ -36,10 +36,10 @@ const Main = ({ filter, setFilter, userEmail }) => {
   const [totalCount, setTotalCount] = useState(0);
 
   const [id, setId] = useState("");
-  const URL = "http://localhost:3001/posts/";
-  // const URL = "https://blog-backend-az.herokuapp.com/posts/";
+  // const URL = "http://localhost:3001/posts/";
+  const URL = "https://blog-backend-az.herokuapp.com/posts/";
 
-  // retrive all the posts
+  // retrieve all the posts
 
   const getPosts = async () => {
     const response = await fetch(URL);
@@ -61,7 +61,6 @@ const Main = ({ filter, setFilter, userEmail }) => {
     getPosts();
   };
   const updatePost = async (post) => {
-    console.log(post);
     await fetch(URL + post._id, {
       method: "PUT",
       headers: {

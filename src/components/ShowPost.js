@@ -34,7 +34,6 @@ const ShowPost = ({
   };
 
   const handleSubmit = (e) => {
-    console.log("submitting", editPost);
     e.preventDefault();
     const postToSubmit =
       editComment == ""
@@ -120,6 +119,7 @@ const ShowPost = ({
       )}
       {/* COMMENT FORM */}
       <div className="comment-card">
+        <h4>Comments</h4>
         {comments.map((comment, index) => {
           return <h5>{comment}</h5>;
         })}
@@ -147,8 +147,8 @@ const ShowPost = ({
             }}
             onChange={handleChangeComment}
             type="text"
-            name="Your comment here"
-            placeholder="comments "
+            name="comments"
+            placeholder="Your comments "
           />
 
           <input
