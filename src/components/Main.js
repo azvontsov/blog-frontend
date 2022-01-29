@@ -120,6 +120,7 @@ const Main = ({ filter, setFilter, userEmail }) => {
         <button style={createButtonStyle} onClick={() => setModal(true)}>
           Create Post
         </button>
+
         <MyModal visible={modal} setVisible={setModal}>
           <PostForm create={createPost} />
         </MyModal>
