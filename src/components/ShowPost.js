@@ -130,6 +130,11 @@ const ShowPost = ({
           <h5>{editPost.tags}</h5>
         </div>
       )}
+      <hr
+        style={{
+          marginTop: "2rem",
+        }}
+      />
       {/* COMMENT FORM */}
       <div className="comment-card">
         <h4>Comments ({comments.length})</h4>
