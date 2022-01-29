@@ -107,8 +107,21 @@ const ShowPost = ({
             name="tags"
             placeholder="tags "
           />
-
-          <input type="submit" value="Update Post" />
+          {/* Buttons */}
+          <div className="edit-btns">
+            <input
+              type="submit"
+              value="Update Post"
+              style={{
+                background: "black",
+                color: "white",
+                padding: ".4rem",
+                borderRadius: ".2rem",
+                border: "none",
+                marginTop: ".5rem",
+              }}
+            />
+          </div>
         </form>
       ) : (
         <div className="show-card">
@@ -132,7 +145,7 @@ const ShowPost = ({
           style={{
             display: "flex",
             flexDirection: "column",
-            marginTop: "4rem",
+            marginTop: "1rem",
           }}
         >
           <textarea
@@ -152,33 +165,33 @@ const ShowPost = ({
             name="comments"
             placeholder="Your comments "
           />
-
-          <input
-            type="submit"
-            value="Save comment"
-            style={{
-              width: "30%",
-              backgroundColor: "green",
-              border: "none",
-              padding: ".4rem",
-              borderRadius: ".2rem",
-              color: "white",
-            }}
-          />
-          <input
-            type="submit"
-            value="Cancel"
-            style={{
-              width: "30%",
-              backgroundColor: "red",
-              border: "none",
-              padding: ".4rem",
-              borderRadius: ".2rem",
-              color: "white",
-              marginTop: "1rem",
-            }}
-            onClick={() => setCommentForm(false)}
-          />
+          <div className="save-comment">
+            <input
+              type="submit"
+              value="Save comment"
+              style={{
+                background: "black",
+                color: "white",
+                padding: ".4rem",
+                borderRadius: ".2rem",
+                border: "none",
+                marginTop: ".5rem",
+              }}
+            />
+            <input
+              type="submit"
+              value="Cancel"
+              style={{
+                background: "none",
+                border: "1px solid ",
+                padding: ".4rem",
+                borderRadius: ".2rem",
+                marginLeft: "1rem",
+                marginTop: ".5rem",
+              }}
+              onClick={() => setCommentForm(false)}
+            />
+          </div>
         </form>
       )}
       {/* COMMENT FORM END */}
@@ -234,11 +247,47 @@ const ShowPost = ({
 
         <div className="post_btns">
           {editForm ? (
-            <button onClick={() => setEditForm(false)}>Cancel</button>
+            <button
+              onClick={() => setEditForm(false)}
+              style={{
+                background: "none",
+                border: "1px solid ",
+                padding: ".4rem",
+                borderRadius: ".2rem",
+                marginLeft: "1rem",
+                marginTop: ".5rem",
+              }}
+            >
+              Cancel
+            </button>
           ) : (
             <div>
-              <button onClick={() => setEditForm(true)}>Edit</button>
-              <button onClick={() => remove(editPost._id)}>Delete</button>
+              <button
+                onClick={() => setEditForm(true)}
+                style={{
+                  background: "black",
+                  color: "white",
+                  padding: ".4rem",
+                  borderRadius: ".2rem",
+                  border: "none",
+                  marginTop: ".5rem",
+                }}
+              >
+                Edit Post
+              </button>
+              <button
+                onClick={() => remove(editPost._id)}
+                style={{
+                  background: "none",
+                  border: "1px solid ",
+                  padding: ".4rem",
+                  borderRadius: ".2rem",
+                  marginLeft: "1rem",
+                  marginTop: ".5rem",
+                }}
+              >
+                Delete Post
+              </button>
             </div>
           )}
           {commentForm ? (
