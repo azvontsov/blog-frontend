@@ -36,17 +36,17 @@ const Main = ({ filter, setFilter, userEmail }) => {
   const [totalCount, setTotalCount] = useState(0);
 
   const [id, setId] = useState("");
-  const URL = "http://localhost:3001/posts/";
-  // const URL = "https://blog-backend-az.herokuapp.com/posts/";
+  // const URL = "http://localhost:3001/posts/";
+  const URL = "https://blog-backend-az.herokuapp.com/posts/";
 
-  // retrive all the posts
+  // retrieve all the posts
 
   const getPosts = async () => {
     const response = await fetch(URL);
     const data = await response.json();
     setPosts(data);
     setModal(false);
-    setShow(false);
+    // setShow(false);
 
     setTotalCount(response.headers["x-total-count"]);
   };
@@ -69,7 +69,9 @@ const Main = ({ filter, setFilter, userEmail }) => {
       body: JSON.stringify(post),
     });
     getPosts();
+    // setShow(true);
   };
+
   const deletePost = async (id) => {
     await fetch(URL + id, {
       method: "DELETE",

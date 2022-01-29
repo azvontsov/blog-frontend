@@ -70,6 +70,26 @@ nav button {
 .show-card p {
   margin-bottom: 1rem;
 }
+.comment-card {
+  margin-top: 2rem;
+
+  padding: 1rem 2rem 2rem 4rem;
+}
+.comment-area {
+  max-height: 200px;
+  overflow-x: scroll;
+  margin-top: 1rem;
+  padding: 2rem 1rem;
+  border-radius: 1rem;
+  background-color: #fff7eb;
+}
+.comment-card h4 {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.comment-card h5 {
+  margin-bottom: 1rem;
+}
 
 .post_footer {
   margin: 1rem 0 1rem 0;
@@ -164,9 +184,22 @@ nav button {
   text-align: center;
   padding-top: 5rem;
 }
-.sidebar a {
+.sidebar button {
   margin-top: 1rem;
   font-size: 1.5rem;
+  background: none;
+  border: none;
+  transition: transform 0.2s;
+}
+.sidebar button:hover {
+  transform: scale(1.5);
+}
+.sidebar button:hover {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: yellow;
 }
 .footer {
   background-color: darkmagenta;
@@ -174,18 +207,4 @@ nav button {
 }
 .post_container {
   margin: 1rem;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 5s linear;
-  }
-}
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

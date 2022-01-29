@@ -19,13 +19,29 @@ const PostForm = ({ create }) => {
             onChange={(e) => setPost({ ...post, title: e.target.value })}
             type="text"
             placeholder="Post Name"
+            style={{
+              padding: ".5rem",
+
+              fontSize: "inherit",
+              fontFamily: "inherit",
+            }}
           />
 
-          <input
+          <textarea
             value={post.body}
             onChange={(e) => setPost({ ...post, body: e.target.value })}
             type="text"
             placeholder="Post Description "
+            style={{
+              minWidth: "100%",
+              maxWidth: "100%",
+              minHeight: "100px",
+              padding: ".5rem",
+              overflowX: "scroll",
+              fontSize: "inherit",
+              fontFamily: "inherit",
+              marginBottom: "1rem",
+            }}
           />
           <input
             value={post.tags}
