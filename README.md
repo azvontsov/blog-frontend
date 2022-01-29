@@ -6,7 +6,7 @@ AAU, I want to be able to Add/Delete/Edit posts.
 
 AAU, I want to be able to Add Comment under the posts.
 
-AAU, I want to be able to sorting the posts by name.
+AAU, I want to be able to sorting the posts by name/description.
 
 AAU, I want to be able to "like" the post.
 
