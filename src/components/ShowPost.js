@@ -183,7 +183,7 @@ const ShowPost = ({
                 marginTop: ".5rem",
               }}
             />
-            <input
+            {/* <input
               type="submit"
               value="Cancel"
               style={{
@@ -195,7 +195,7 @@ const ShowPost = ({
                 marginTop: ".5rem",
               }}
               onClick={() => setCommentForm(false)}
-            />
+            /> */}
           </div>
         </form>
       )}
@@ -296,21 +296,37 @@ const ShowPost = ({
             </div>
           )}
           {commentForm ? (
-            <button onClick={() => setCommentForm(false)}>Cancel</button>
+            <button
+              onClick={() => setCommentForm(false)}
+              style={{
+                background: "none",
+                border: "1px solid ",
+                padding: ".4rem",
+                borderRadius: ".2rem",
+
+                marginTop: ".5rem",
+              }}
+            >
+              Cancel
+            </button>
           ) : (
             <div>
-              <button
-                onClick={() => setCommentForm(true)}
-                style={{
-                  marginTop: "2rem",
-                  backgroundColor: "green",
-                  border: "none",
-                  padding: ".4rem",
-                  borderRadius: ".2rem",
-                }}
-              >
-                Comment
-              </button>
+              {editForm ? null : (
+                <button
+                  onClick={() => setCommentForm(true)}
+                  style={{
+                    background: "black",
+                    color: "white",
+                    padding: ".4rem",
+                    borderRadius: ".2rem",
+                    border: "none",
+                    marginTop: "2rem",
+                    width: "10.5rem",
+                  }}
+                >
+                  Comment
+                </button>
+              )}
             </div>
           )}
         </div>

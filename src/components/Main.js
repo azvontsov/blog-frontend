@@ -76,6 +76,7 @@ const Main = ({ filter, setFilter, userEmail }) => {
     await fetch(URL + id, {
       method: "DELETE",
     });
+    setShow(false);
     getPosts();
   };
 

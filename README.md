@@ -35,12 +35,6 @@ AAU, I want to be able to log in and log out using my Google account.
 
 ## Getting Started
 
-```
-npm install
-npm run seed # seed the database
-npm run start
-```
-
 [Click here](https://blog-backend-az.herokuapp.com/posts/) to see the site live
 
 ## Future Enchancements
