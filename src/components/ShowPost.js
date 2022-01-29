@@ -119,10 +119,12 @@ const ShowPost = ({
       )}
       {/* COMMENT FORM */}
       <div className="comment-card">
-        <h4>Comments</h4>
-        {comments.map((comment, index) => {
-          return <h5>{comment}</h5>;
-        })}
+        <h4>Comments ({comments.length})</h4>
+        <div className="comment-area">
+          {comments.map((comment, index) => {
+            return <h5>{comment}</h5>;
+          })}
+        </div>
       </div>
       {commentForm && (
         <form
@@ -227,9 +229,7 @@ const ShowPost = ({
             style={{
               marginLeft: "1rem",
             }}
-          >
-            {comments.length} comments
-          </h5>
+          ></h5>
         </div>
 
         <div className="post_btns">

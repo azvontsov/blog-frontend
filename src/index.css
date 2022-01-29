@@ -71,12 +71,24 @@ nav button {
   margin-bottom: 1rem;
 }
 .comment-card {
-  max-height: 200px;
+  margin-top: 2rem;
 
+  padding: 1rem 2rem 2rem 4rem;
+}
+.comment-area {
+  max-height: 200px;
   overflow-x: scroll;
-  margin-top: 3rem;
+  margin-top: 1rem;
   padding: 2rem 1rem;
   border-radius: 1rem;
+  background-color: #fff7eb;
+}
+.comment-card h4 {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.comment-card h5 {
+  margin-bottom: 1rem;
 }
 
 .post_footer {
@@ -177,6 +189,10 @@ nav button {
   font-size: 1.5rem;
   background: none;
   border: none;
+  transition: transform 0.2s;
+}
+.sidebar button:hover {
+  transform: scale(1.5);
 }
 .sidebar button:hover {
   margin-top: 1rem;
