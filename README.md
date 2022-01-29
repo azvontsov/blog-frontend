@@ -32,7 +32,6 @@ AAU, I want to be able to log in and log out using my Google account.
 ## Screenshots
 
 ![Imgur Image](https://imgur.com/8GCfGZK.png)
-![Imgur Image](https://imgur.com/XsJ19fd.png)
 
 ## Getting Started
 
