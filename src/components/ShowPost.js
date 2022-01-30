@@ -126,7 +126,7 @@ const ShowPost = ({
       ) : (
         <div className="show-card">
           <h1>{editPost.title}</h1>
-          <p>{editPost.body}</p>
+          <div style={{ whiteSpace: "pre" }}>{editPost.body}</div>
           <h5>{editPost.tags}</h5>
         </div>
       )}
