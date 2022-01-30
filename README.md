@@ -35,6 +35,6 @@ AAU, I want to be able to log in and log out using my Google account.
 
 ## Getting Started
 
-[Click here](https://blog-backend-az.herokuapp.com/posts/) to see the site live
+[Click here](https://blog-js-az.netlify.app/) to see the site live
 
 ## Future Enchancements
