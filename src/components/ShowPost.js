@@ -129,7 +129,7 @@ const ShowPost = ({
           <div
             style={{
               whiteSpace: "pre-wrap",
-              maxHeight: "200px",
+
               overflow: "auto",
               display: "block",
 
@@ -143,7 +143,7 @@ const ShowPost = ({
       )}
       <hr
         style={{
-          marginTop: "2rem",
+          marginTop: "1rem",
         }}
       />
       {/* COMMENT FORM */}
@@ -202,7 +202,7 @@ const ShowPost = ({
       <div
         className="reactions"
         style={{
-          margin: "1rem 0 1rem 0",
+          margin: "1rem 0 0 0",
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
@@ -319,7 +319,7 @@ const ShowPost = ({
                     padding: ".4rem",
                     borderRadius: ".2rem",
                     border: "none",
-                    marginTop: "1.5rem",
+                    marginTop: "1rem",
                     width: "10.5rem",
                   }}
                 >

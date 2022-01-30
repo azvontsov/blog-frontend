@@ -68,7 +68,7 @@ nav button {
   margin: 1rem 0;
 }
 .show-card {
-  max-height: 40vh;
+  max-height: 60vh;
   overflow-x: scroll;
 }
 .show-card h1 {
@@ -86,15 +86,15 @@ nav button {
   max-height: 150px;
   overflow-x: scroll;
   padding: 1rem 1rem;
-  border-radius: 1rem;
+  border-radius: 0.4rem;
   background-color: #ededed;
 }
 .comment-card h4 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.4rem;
   font-size: 1rem;
 }
 .comment-card h5 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.4rem;
 }
 
 .post_footer {
