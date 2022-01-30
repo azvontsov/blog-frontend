@@ -63,25 +63,11 @@ const PostItem = (props) => {
 
           <h5>{likes.length} reactions</h5>
           {comments.includes(userEmail) ? (
-            <a
-              onClick={() =>
-                updatePost({
-                  ...post,
-                  comments: comments.filter((email) => email != userEmail),
-                })
-              }
-            >
-              <FaComments style={{ color: "green" }} />
+            <a>
+              <FaComments />
             </a>
           ) : (
-            <a
-              onClick={() =>
-                updatePost({
-                  ...post,
-                  comments: [...comments, userEmail],
-                })
-              }
-            >
+            <a>
               <FaComments style={{ color: "black" }} />
             </a>
           )}

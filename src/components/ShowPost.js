@@ -126,7 +126,18 @@ const ShowPost = ({
       ) : (
         <div className="show-card">
           <h1>{editPost.title}</h1>
-          <div style={{ whiteSpace: "pre" }}>{editPost.body}</div>
+          <div
+            style={{
+              whiteSpace: "pre-wrap",
+              maxHeight: "200px",
+              overflow: "auto",
+              display: "block",
+
+              margin: "1em 0",
+            }}
+          >
+            {editPost.body}
+          </div>
           <h5>{editPost.tags}</h5>
         </div>
       )}
@@ -164,6 +175,7 @@ const ShowPost = ({
               fontSize: "1rem",
               fontFamily: "inherit",
               marginBottom: "1rem",
+              whiteSpace: "pre-wrap",
             }}
             onChange={handleChangeComment}
             type="text"
@@ -183,19 +195,6 @@ const ShowPost = ({
                 marginTop: ".5rem",
               }}
             />
-            {/* <input
-              type="submit"
-              value="Cancel"
-              style={{
-                background: "none",
-                border: "1px solid ",
-                padding: ".4rem",
-                borderRadius: ".2rem",
-                marginLeft: "1rem",
-                marginTop: ".5rem",
-              }}
-              onClick={() => setCommentForm(false)}
-            /> */}
           </div>
         </form>
       )}
