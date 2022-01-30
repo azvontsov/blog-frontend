@@ -320,7 +320,7 @@ const ShowPost = ({
                     padding: ".4rem",
                     borderRadius: ".2rem",
                     border: "none",
-                    marginTop: "2rem",
+                    marginTop: "1.5rem",
                     width: "10.5rem",
                   }}
                 >

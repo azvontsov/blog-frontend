@@ -24,8 +24,10 @@ function App() {
         <Main filter={filter} setFilter={setFilter} userEmail={user?.email} />
         <Sidebar filter={filter} setFilter={setFilter} />
 
-        <div className="sidebar-r">side-r</div>
-        <div className="footer">Footer</div>
+        <div className="sidebar-r"></div>
+        <div className="footer">
+          <p>Copyright © 2022 | Made by Anton Z</p>>
+        </div>
       </div>
     </div>
   );

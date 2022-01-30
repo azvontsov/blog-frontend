@@ -21,7 +21,7 @@ nav h1 {
 }
 nav input {
   padding: 0.4rem;
-  width: 65%;
+  width: 100%;
   border-radius: 0.5rem;
 }
 nav button {
@@ -33,7 +33,7 @@ nav button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 50%;
+  width: 60%;
 
   margin-left: 2rem;
 }
@@ -43,6 +43,14 @@ nav button {
   justify-content: space-around;
   margin-right: 2rem;
 }
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  align-items: baseline;
+  width: 200px;
+}
+
 /* POST */
 .post {
   display: flex;
@@ -60,7 +68,7 @@ nav button {
   margin: 1rem 0;
 }
 .show-card {
-  max-height: 800px;
+  max-height: 40vh;
   overflow-x: scroll;
 }
 .show-card h1 {
@@ -80,7 +88,7 @@ nav button {
 
   padding: 1rem 1rem;
   border-radius: 1rem;
-  background-color: #fff7eb;
+  background-color: #ededed;
 }
 .comment-card h4 {
   margin-bottom: 1rem;
