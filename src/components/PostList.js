@@ -16,7 +16,7 @@ const PostList = ({
   }
 
   return (
-    <div>
+    <div className="index-of-posts">
       <h1 style={{ textAlign: "center" }}>{title}</h1>
       <TransitionGroup>
         {posts.map((post, index) => (

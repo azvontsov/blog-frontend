@@ -33,6 +33,9 @@ const Sidebar = ({ filter, setFilter }) => {
           #programming
         </button>
       </div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
     </div>
   );
 };

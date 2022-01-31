@@ -66,6 +66,7 @@ nav button {
 .post {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding: 15px;
   background-color: white;
   border-radius: 0.4rem;
@@ -130,6 +131,7 @@ nav button {
   flex-direction: row;
   align-items: center;
 }
+
 /* POST ANIMATION */
 .remove-btn {
   margin-right: 0.5rem;
@@ -188,9 +190,9 @@ nav button {
 }
 .content {
   grid-area: main;
-
   overflow-x: scroll;
 }
+
 .sidebar {
   background-color: rgba(30, 32, 44, 0.95);
   grid-area: sd;
@@ -211,15 +213,6 @@ nav button {
   margin-top: 5rem;
   color: rgb(194, 194, 194);
 }
-.sidebar-r {
-  background-color: rgba(30, 32, 44, 0.95);
-  grid-area: sdr;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding-top: 5rem;
-  margin-top: 4rem;
-}
 .sidebar button {
   margin-top: 1rem;
   font-size: 1.5rem;
@@ -237,6 +230,16 @@ nav button {
   border: none;
   color: rgb(255, 212, 0);
 }
+.sidebar-r {
+  background-color: rgba(30, 32, 44, 0.95);
+  grid-area: sdr;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 5rem;
+  margin-top: 4rem;
+}
+
 .footer {
   backdrop-filter: blur(20px);
   background: rgb(71, 0, 131, 0.6);
