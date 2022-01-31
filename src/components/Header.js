@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { login, logout } from "../services/firebase";
-import { FaConnectdevelop } from "react-icons/fa";
+import {} from "react-icons/fa";
 
 const Header = ({ filter, setFilter, user }) => {
   return (
@@ -8,13 +8,7 @@ const Header = ({ filter, setFilter, user }) => {
       <nav className="nav">
         <div className="nav-logo-search">
           <div className="logo">
-            <FaConnectdevelop
-              style={{
-                height: "2rem",
-                width: "2rem",
-              }}
-            />
-            <h1>JS BLOG</h1>
+            <h1 style={{ fontSize: "2rem" }}>JS BLOG</h1>
           </div>
           <div style={{ width: "40rem" }}>
             <input

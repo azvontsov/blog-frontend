@@ -7,7 +7,6 @@
   font-family: "Roboto", sans-serif;
   background-color: #efefef;
 }
-
 /* HEADER */
 nav {
   display: flex;
@@ -20,8 +19,6 @@ nav {
   backdrop-filter: blur(20px);
   background: rgb(71, 0, 131, 0.6);
   color: rgb(255, 255, 255);
-  flex-shrink: 0;
-  z-index: 1100;
 }
 
 nav h1 {
@@ -74,7 +71,7 @@ nav button {
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 .post:hover {
-  background-color: rgb(255, 212, 0);
+  background-color: rgb(250, 250, 229);
   transform: scale(1.03);
   box-shadow: rgba(24, 24, 44, 0.7) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.5) 0px 1px 3px -1px;
@@ -187,16 +184,15 @@ nav button {
 }
 .content {
   grid-area: main;
-
+  height: 90vh;
   overflow-x: scroll;
 }
 .sidebar {
-  background-color: rgb(91, 91, 91);
+  background-color: rgb(147, 147, 147);
   grid-area: sd;
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-top: 4rem;
 }
 .sidebar div {
   margin-top: 10rem;
@@ -208,16 +204,14 @@ nav button {
   justify-content: flex-start;
   margin-left: 20%;
   margin-top: 5rem;
-  color: rgb(194, 194, 194);
 }
 .sidebar-r {
-  background-color: rgb(91, 91, 91);
+  background-color: rgb(147, 147, 147);
   grid-area: sdr;
   display: flex;
   flex-direction: column;
   text-align: center;
   padding-top: 5rem;
-  margin-top: 4rem;
 }
 .sidebar button {
   margin-top: 1rem;
@@ -234,22 +228,16 @@ nav button {
   font-size: 1.5rem;
   background: none;
   border: none;
-  color: rgb(255, 212, 0);
+  color: yellow;
 }
 .footer {
-  backdrop-filter: blur(20px);
-  background: rgb(71, 0, 131, 0.6);
+  background-color: rgb(0, 0, 0, 0.6);
   grid-area: ft;
   color: white;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  height: 3rem;
-  width: 100%;
 }
 .post_container {
   margin: 1rem;
