@@ -105,23 +105,30 @@ const Main = ({ filter, setFilter, userEmail }) => {
   // run getPost
   useEffect(() => getPosts(), []);
 
-  const createButtonStyle = {
-    padding: "10px",
-    width: "30rem",
-    marginTop: "5rem",
-    marginLeft: "20%",
-    backgroundColor: "black",
-    color: "white",
-    border: "none",
-    borderRadius: ".4rem",
-  };
   return (
     <div className="content">
       <div className="post_container">
-        <button style={createButtonStyle} onClick={() => setModal(true)}>
-          Create Post
-        </button>
-
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <button
+            style={{
+              padding: "10px",
+              width: "30rem",
+              marginTop: "9rem",
+              backgroundColor: "black",
+              color: "white",
+              border: "none",
+              borderRadius: ".4rem",
+            }}
+            onClick={() => setModal(true)}
+          >
+            Create Post
+          </button>
+        </div>
         <MyModal visible={modal} setVisible={setModal}>
           <PostForm create={createPost} />
         </MyModal>

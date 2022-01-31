@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 #root {
-  font-family: "Roboto", sans-serif;
+  font-family: CerebriSans-Bold, -apple-system, BlinkMacSystemFont, Roboto,
+    sans-serif;
   background-color: #efefef;
 }
 
@@ -191,7 +192,7 @@ nav button {
   overflow-x: scroll;
 }
 .sidebar {
-  background-color: rgb(91, 91, 91);
+  background-color: rgba(30, 32, 44, 0.95);
   grid-area: sd;
   display: flex;
   flex-direction: column;
@@ -211,7 +212,7 @@ nav button {
   color: rgb(194, 194, 194);
 }
 .sidebar-r {
-  background-color: rgb(91, 91, 91);
+  background-color: rgba(30, 32, 44, 0.95);
   grid-area: sdr;
   display: flex;
   flex-direction: column;
@@ -252,5 +253,6 @@ nav button {
   width: 100%;
 }
 .post_container {
-  margin: 1rem;
+  display: flex;
+  flex-direction: column;
 }
