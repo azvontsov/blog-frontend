@@ -129,10 +129,8 @@ const ShowPost = ({
           <div
             style={{
               whiteSpace: "pre-wrap",
-
               overflow: "auto",
               display: "block",
-
               margin: "1em 0",
             }}
           >
@@ -154,6 +152,40 @@ const ShowPost = ({
             return <h5>{comment}</h5>;
           })}
         </div>
+        {commentForm ? (
+          <button
+            onClick={() => setCommentForm(false)}
+            style={{
+              background: "none",
+              border: "1px solid ",
+              padding: ".4rem",
+              borderRadius: ".2rem",
+
+              marginTop: ".5rem",
+            }}
+          >
+            Cancel
+          </button>
+        ) : (
+          <div>
+            {editForm ? null : (
+              <button
+                onClick={() => setCommentForm(true)}
+                style={{
+                  background: "black",
+                  color: "white",
+                  padding: ".4rem",
+                  borderRadius: ".2rem",
+                  border: "none",
+                  marginTop: "1rem",
+                  width: "10.5rem",
+                }}
+              >
+                Comment
+              </button>
+            )}
+          </div>
+        )}
       </div>
       {commentForm && (
         <form
@@ -294,7 +326,7 @@ const ShowPost = ({
               </button>
             </div>
           )}
-          {commentForm ? (
+          {/* {commentForm ? (
             <button
               onClick={() => setCommentForm(false)}
               style={{
@@ -327,7 +359,7 @@ const ShowPost = ({
                 </button>
               )}
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </>
